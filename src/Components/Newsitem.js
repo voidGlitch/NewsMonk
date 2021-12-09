@@ -1,13 +1,19 @@
-/* eslint-disable react/jsx-no-target-blank */
 import React, { Component } from "react";
 
-export class Newsitem extends Component {
+export class NewsItem extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl, author, publishedAt, source } =
+    let { title, description, imageUrl, newsUrl, author, date, source, mode } =
       this.props;
     return (
       <div className="my-3">
-        <div className="card" style={{ maxWidth: "18rem" }}>
+        <div
+          className="card"
+          style={{
+            maxWidth: "18rem",
+            backgroundColor: `${mode === "dark" ? "#181513" : "white"}`,
+            color: `${mode === "dark" ? "white" : "black"}`,
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -16,7 +22,7 @@ export class Newsitem extends Component {
               right: "0",
             }}
           >
-            <span className=" badge rounded-pill bg-danger">{source}</span>
+            <span className="badge rounded-pill bg-danger"> {source} </span>
           </div>
           <img
             src={
@@ -28,20 +34,21 @@ export class Newsitem extends Component {
             alt="..."
           />
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
+            <h5 className="card-title">{title} </h5>
             <p className="card-text">{description}</p>
             <p className="card-text">
               <small className="text-muted">
-                By {!author ? "Unknown" : author} at{" "}
-                {new Date(publishedAt).toGMTString()} mins ago
+                By {!author ? "Unknown" : author} on{" "}
+                {new Date(date).toGMTString()}
               </small>
             </p>
             <a
+              rel="noreferrer"
               href={newsUrl}
               target="_blank"
               className="btn btn-sm btn-primary"
             >
-              Read more
+              Read More
             </a>
           </div>
         </div>
@@ -50,4 +57,4 @@ export class Newsitem extends Component {
   }
 }
 
-export default Newsitem;
+export default NewsItem;
