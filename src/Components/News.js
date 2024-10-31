@@ -13,19 +13,27 @@ const News = (props) => {
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-
   const updateNews = async () => {
-    props.setprogress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
-    setLoading(true);
-    let data = await fetch(url);
-    props.setprogress(30);
-    let parsedData = await data.json();
-    props.setprogress(70);
-    setArticles(parsedData.articles);
-    setTotalResults(parsedData.totalResults);
-    setLoading(false);
-    props.setprogress(100);
+    try {
+      props.setprogress(10);
+      const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+      console.log(url);
+      setLoading(true);
+      let data = await fetch(url);
+      if (!data.ok) throw new Error("Network response was not ok");
+      props.setprogress(30);
+      let parsedData = await data.json();
+      console.log(parsedData);
+      props.setprogress(70);
+      setArticles(parsedData.articles);
+      setTotalResults(parsedData.totalResults);
+    } catch (error) {
+      console.error("Error fetching news:", error);
+      // Optionally set an error state here to display a message to the user
+    } finally {
+      setLoading(false);
+      props.setprogress(100);
+    }
   };
 
   useEffect(() => {

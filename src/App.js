@@ -7,7 +7,9 @@ import LoadingBar from "react-top-loading-bar";
 
 const App = () => {
   const pageSize = 6;
-  const apiKey = "bfe370afcc344adeb82342e210a9166e";
+  console.log("API Key:", process.env.REACT_APP_API_KEY);
+  const apiKey = process.env.REACT_APP_API_KEY;
+  console.log(apiKey);
   const [progress, setprogress] = useState(0);
   const [mode, setmode] = useState("light");
 
@@ -35,7 +37,7 @@ const App = () => {
               apiKey={apiKey}
               key="general"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="general"
               mode={mode}
             />
@@ -46,7 +48,7 @@ const App = () => {
               apiKey={apiKey}
               key="business"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="business"
               mode={mode}
             />
@@ -57,7 +59,7 @@ const App = () => {
               apiKey={apiKey}
               key="entertainment"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="entertainment"
               mode={mode}
             />
@@ -68,7 +70,7 @@ const App = () => {
               apiKey={apiKey}
               key="general"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="general"
               mode={mode}
             />
@@ -79,7 +81,7 @@ const App = () => {
               apiKey={apiKey}
               key="health"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="health"
               mode={mode}
             />
@@ -90,7 +92,7 @@ const App = () => {
               apiKey={apiKey}
               key="science"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="science"
               mode={mode}
             />
@@ -101,7 +103,7 @@ const App = () => {
               apiKey={apiKey}
               key="sports"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="sports"
               mode={mode}
             />
@@ -112,7 +114,7 @@ const App = () => {
               apiKey={apiKey}
               key="technology"
               pageSize={pageSize}
-              country="in"
+              country="us"
               category="technology"
               mode={mode}
             />
