@@ -1,6 +1,6 @@
 import React from "react";
 // import loading from "./Book.gif";
-import Loader from "react-loader-spinner";
+import { Puff } from "react-loader-spinner";
 
 const Spinner = () => {
   // toggle = () => {
@@ -12,7 +12,7 @@ const Spinner = () => {
   return (
     <div className="text-center my-3">
       {/* <img className="my-3" src={loading} alt="" /> */}
-      <Loader
+      <Puff
         type="Circles"
         color="#00BFFF"
         height={80}
